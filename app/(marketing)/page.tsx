@@ -10,13 +10,13 @@ export default async function IndexPage() {
     <>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-          <Link
+          {/* <Link
             href={siteConfig.links.twitter}
             className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium"
             target="_blank"
           >
             Follow along on Twitter
-          </Link>
+          </Link> */}
           <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
             An example app built using Next.js 13 server components.
           </h1>
@@ -40,15 +40,15 @@ export default async function IndexPage() {
         </div>
       </section>
       <section
-        id="features"
+        id="tools"
         className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24"
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            Features
+            Tools
           </h2>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            This project is an experiment to see how a modern app, with features
+            This project is an experiment to see how a modern app, with tools
             like auth, subscriptions, API routes, and static pages would work in
             Next.js 13 app dir.
           </p>
