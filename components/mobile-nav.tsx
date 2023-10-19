@@ -1,4 +1,5 @@
 import * as React from "react"
+import Image from "next/image"
 import Link from "next/link"
 
 import { MainNavItem } from "types"
@@ -23,7 +24,12 @@ export function MobileNav({ items, children }: MobileNavProps) {
     >
       <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
         <Link href="/" className="flex items-center space-x-2">
-          <Icons.logo />
+          <Image
+            src="/images/Pixel_Log_black_white.png"
+            alt="Avatar"
+            width={25}
+            height={25}
+          />
           <span className="font-bold">{siteConfig.name}</span>
         </Link>
         <nav className="grid grid-flow-row auto-rows-max text-sm">

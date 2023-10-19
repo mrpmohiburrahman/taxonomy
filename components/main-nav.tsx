@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { useSelectedLayoutSegment } from "next/navigation"
 
@@ -22,10 +23,24 @@ export function MainNav({ items, children }: MainNavProps) {
   return (
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="hidden items-center space-x-2 md:flex">
-        <Icons.logo />
-        <span className="hidden font-bold sm:inline-block">
-          {siteConfig.name}
-        </span>
+        <div
+          style={{
+            flexDirection: "row",
+            display: "flex",
+            alignItems: "center",
+            borderColor: "black",
+          }}
+        >
+          <Image
+            src="/images/Pixel_Log_black_white.png"
+            alt="Avatar"
+            width={25}
+            height={25}
+          />
+          <span className="font-bold" style={{ fontSize: 20, paddingLeft: 10 }}>
+            {siteConfig.name}
+          </span>
+        </div>
       </Link>
       {items?.length ? (
         <nav className="hidden gap-6 md:flex">
@@ -50,7 +65,16 @@ export function MainNav({ items, children }: MainNavProps) {
         className="flex items-center space-x-2 md:hidden"
         onClick={() => setShowMobileMenu(!showMobileMenu)}
       >
-        {showMobileMenu ? <Icons.close /> : <Icons.logo />}
+        {showMobileMenu ? (
+          <Icons.close />
+        ) : (
+          <Image
+            src="/images/Pixel_Log_black_white.png"
+            alt="Avatar"
+            width={25}
+            height={25}
+          />
+        )}
         <span className="font-bold">Menu</span>
       </button>
       {showMobileMenu && items && (
