@@ -15,9 +15,9 @@ export default async function MarketingLayout({
   children,
 }: MarketingLayoutProps) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <header className="container z-40 bg-background">
-        <div className="flex items-center justify-between h-20 py-6">
+        <div className="flex h-20 items-center justify-between py-6">
           <MainNav items={marketingConfig.mainNav} />
           <div
             style={{
@@ -28,12 +28,12 @@ export default async function MarketingLayout({
             }}
           >
             <ModeToggle />
-
             <nav
               style={{
                 borderColor: "red",
                 display: "flex",
                 alignItems: "center",
+                paddingLeft: 20,
               }}
             >
               <Link
