@@ -12,6 +12,15 @@ const nextConfig = {
     appDir: true,
     serverComponentsExternalPackages: ["@prisma/client"],
   },
+  async redirects() {
+    return [
+      {
+        source: '/pricing',
+        destination: '/',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default withContentlayer(nextConfig)
