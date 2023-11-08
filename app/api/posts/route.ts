@@ -1,11 +1,17 @@
-import { currentUser } from "@clerk/nextjs"
-import { getServerSession } from "next-auth/next"
-import * as z from "zod"
+import { currentUser } from "@clerk/nextjs";
+import { getServerSession } from "next-auth/next";
+import * as z from "zod";
 
-import { authOptions } from "@/lib/auth"
-import { db } from "@/lib/db"
-import { RequiresProPlanError } from "@/lib/exceptions"
-import { getUserSubscriptionPlan } from "@/lib/subscription"
+
+
+import { authOptions } from "@/lib/auth";
+import { db } from "@/lib/db";
+import { RequiresProPlanError } from "@/lib/exceptions";
+import { getUserSubscriptionPlan } from "@/lib/subscription";
+
+
+
+
 
 const postCreateSchema = z.object({
   title: z.string(),
@@ -14,13 +20,12 @@ const postCreateSchema = z.object({
 
 export async function GET() {
   try {
-    const session = await getServerSession(authOptions)
+    const user = await currentUser()
 
-    if (!session) {
+    if (!user) {
       return new Response("Unauthorized", { status: 403 })
     }
 
-    const { user } = session
     const posts = await db.post.findMany({
       select: {
         id: true,
