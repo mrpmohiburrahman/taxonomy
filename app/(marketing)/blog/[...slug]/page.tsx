@@ -9,7 +9,6 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { env } from "@/env.mjs"
-import { getSinglePage } from "@/lib/contentParser"
 import { absoluteUrl, cn, formatDate } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
@@ -20,15 +19,10 @@ interface PostPageProps {
   }
 }
 
-const blog_folder = "posts"
 async function getPostFromParams(params) {
   const slug = params?.slug?.join("/")
-  console.log(`🚀 ~ file: page.tsx:25 ~ getPostFromParams ~ slug:`, slug)
-  const allPosts = getSinglePage(`content_2/${blog_folder}`)
-  const post = allPosts.find((post) => {
-    return post.slug === slug
-  })
-  console.log(`🚀 ~ file: page.tsx:28 ~ getPostFromParams ~ post:`, post)
+  const post = allPosts.find((post) => post.slugAsParams === slug)
+
   if (!post) {
     null
   }
@@ -81,97 +75,96 @@ export async function generateMetadata({
   }
 }
 
-// export async function generateStaticParams(): Promise<
-//   PostPageProps["params"][]
-// > {
-//   return allPosts.map((post) => ({
-//     slug: post.slugAsParams.split("/"),
-//   }))
-// }
+export async function generateStaticParams(): Promise<
+  PostPageProps["params"][]
+> {
+  return allPosts.map((post) => ({
+    slug: post.slugAsParams.split("/"),
+  }))
+}
 
 export default async function PostPage({ params }: PostPageProps) {
-  console.log(`🚀 ~ file: page.tsx:92 ~ PostPage ~ params:`, params)
-  return <div>hello</div>
-  // const post = await getPostFromParams(params)
+  console.log(`🚀 ~ file: page.tsx:87 ~ PostPage ~ params:`, params)
+  const post = await getPostFromParams(params)
 
-  // if (!post) {
-  //   notFound()
-  // }
+  if (!post) {
+    notFound()
+  }
 
-  // // const authors = post.authors.map((author) =>
-  // //   allAuthors.find(({ slug }) => slug === `/authors/${author}`)
-  // // )
+  const authors = post.authors.map((author) =>
+    allAuthors.find(({ slug }) => slug === `/authors/${author}`)
+  )
 
-  // return (
-  //   <article className="container relative max-w-3xl py-6 lg:py-10">
-  //     <Link
-  //       href="/blog"
-  //       className={cn(
-  //         buttonVariants({ variant: "ghost" }),
-  //         "absolute left-[-200px] top-14 hidden xl:inline-flex"
-  //       )}
-  //     >
-  //       <Icons.chevronLeft className="w-4 h-4 mr-2" />
-  //       See all posts
-  //     </Link>
-  //     <div>
-  //       {post.frontmatter.date && (
-  //         <time
-  //           dateTime={post.frontmatter.date}
-  //           className="block text-sm text-muted-foreground"
-  //         >
-  //           Published on {formatDate(post.frontmatter.date)}
-  //         </time>
-  //       )}
-  //       <h1 className="inline-block mt-2 text-4xl leading-tight font-heading lg:text-5xl">
-  //         {post.frontmatter.title}
-  //       </h1>
-  //       {/* {authors?.length ? (
-  //         <div className="flex mt-4 space-x-4">
-  //           {authors.map((author) =>
-  //             author ? (
-  //               <Link
-  //                 key={author._id}
-  //                 href={`https://twitter.com/${author.twitter}`}
-  //                 className="flex items-center space-x-2 text-sm"
-  //               >
-  //                 <Image
-  //                   src={author.avatar}
-  //                   alt={author.title}
-  //                   width={42}
-  //                   height={42}
-  //                   className="bg-white rounded-full"
-  //                 />
-  //                 <div className="flex-1 leading-tight text-left">
-  //                   <p className="font-medium">{author.title}</p>
-  //                   <p className="text-[12px] text-muted-foreground">
-  //                     @{author.twitter}
-  //                   </p>
-  //                 </div>
-  //               </Link>
-  //             ) : null
-  //           )}
-  //         </div>
-  //       ) : null} */}
-  //     </div>
-  //     {post.frontmatter.image && (
-  //       <Image
-  //         src={post.frontmatter.image}
-  //         alt={post.frontmatter.title}
-  //         width={720}
-  //         height={405}
-  //         className="my-8 transition-colors border rounded-md bg-muted"
-  //         priority
-  //       />
-  //     )}
-  //     {/* <Mdx code={post.body.code} /> */}
-  //     <hr className="mt-12" />
-  //     <div className="flex justify-center py-6 lg:py-10">
-  //       <Link href="/blog" className={cn(buttonVariants({ variant: "ghost" }))}>
-  //         <Icons.chevronLeft className="w-4 h-4 mr-2" />
-  //         See all posts
-  //       </Link>
-  //     </div>
-  //   </article>
-  // )
+  return (
+    <article className="container relative max-w-3xl py-6 lg:py-10">
+      <Link
+        href="/blog"
+        className={cn(
+          buttonVariants({ variant: "ghost" }),
+          "absolute left-[-200px] top-14 hidden xl:inline-flex"
+        )}
+      >
+        <Icons.chevronLeft className="mr-2 h-4 w-4" />
+        See all posts
+      </Link>
+      <div>
+        {post.date && (
+          <time
+            dateTime={post.date}
+            className="block text-sm text-muted-foreground"
+          >
+            Published on {formatDate(post.date)}
+          </time>
+        )}
+        <h1 className="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">
+          {post.title}
+        </h1>
+        {authors?.length ? (
+          <div className="mt-4 flex space-x-4">
+            {authors.map((author) =>
+              author ? (
+                <Link
+                  key={author._id}
+                  href={`https://twitter.com/${author.twitter}`}
+                  className="flex items-center space-x-2 text-sm"
+                >
+                  <Image
+                    src={author.avatar}
+                    alt={author.title}
+                    width={42}
+                    height={42}
+                    className="rounded-full bg-white"
+                  />
+                  <div className="flex-1 text-left leading-tight">
+                    <p className="font-medium">{author.title}</p>
+                    <p className="text-[12px] text-muted-foreground">
+                      @{author.twitter}
+                    </p>
+                  </div>
+                </Link>
+              ) : null
+            )}
+          </div>
+        ) : null}
+      </div>
+      {post.image && (
+        <Image
+          src={post.image}
+          alt={post.title}
+          width={720}
+          height={405}
+          className="my-8 rounded-md border bg-muted transition-colors"
+          priority
+        />
+      )}
+      <Mdx code={post.body.code} />
+      <hr className="mt-12" />
+      <div className="flex justify-center py-6 lg:py-10">
+        <Link href="/blog" className={cn(buttonVariants({ variant: "ghost" }))}>
+          <Icons.chevronLeft className="mr-2 h-4 w-4" />
+          See all posts
+        </Link>
+      </div>
+    </article>
+  )
 }
