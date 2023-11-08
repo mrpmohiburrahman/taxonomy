@@ -96,6 +96,7 @@ export function Editor({ post }: EditorProps) {
       body: JSON.stringify({
         title: data.title,
         content: blocks,
+        published: true,
       }),
     })
 
