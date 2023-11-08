@@ -1,9 +1,8 @@
 import { notFound, redirect } from "next/navigation"
+import { currentUser } from "@clerk/nextjs"
 import { Post, User } from "@prisma/client"
 
-import { authOptions } from "@/lib/auth"
 import { db } from "@/lib/db"
-import { getCurrentUser } from "@/lib/session"
 import { Editor } from "@/components/editor"
 
 async function getPostForUser(postId: Post["id"], userId: User["id"]) {
@@ -20,14 +19,13 @@ interface EditorPageProps {
 }
 
 export default async function EditorPage({ params }: EditorPageProps) {
-  // const user = await getCurrentUser()
+  const user = await currentUser()
 
-  // if (!user) {
-  //   redirect(authOptions?.pages?.signIn || "/login")
-  // }
+  if (!user) {
+    redirect("/login")
+  }
 
-  // const post =  await getPostForUser(params.postId, user.id)
-  const post = undefined
+  const post = await getPostForUser(params.postId, user.id)
 
   if (!post) {
     notFound()

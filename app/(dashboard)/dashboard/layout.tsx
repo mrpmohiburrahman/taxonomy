@@ -16,7 +16,6 @@ export default async function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
   const user = await currentUser()
-  console.log(`🚀 ~ file: layout.tsx:18 ~ user:`, user)
 
   if (!user) {
     return notFound()
