@@ -1,5 +1,5 @@
 import { notFound, redirect } from "next/navigation"
-import { currentUser } from "@clerk/nextjs"
+
 import { Post, User } from "@prisma/client"
 
 import { db } from "@/lib/db"
@@ -19,26 +19,27 @@ interface EditorPageProps {
 }
 
 export default async function EditorPage({ params }: EditorPageProps) {
-  const user = await currentUser()
+  return <div>EditorPage</div>
+  // const user = await currentUser()
 
-  if (!user) {
-    redirect("/login")
-  }
+  // if (!user) {
+  //   redirect("/login")
+  // }
 
-  const post = await getPostForUser(params.postId, user.id)
+  // const post = await getPostForUser(params.postId, user.id)
 
-  if (!post) {
-    notFound()
-  }
+  // if (!post) {
+  //   notFound()
+  // }
 
-  return (
-    <Editor
-      post={{
-        id: post.id,
-        title: post.title,
-        content: post.content,
-        published: post.published,
-      }}
-    />
-  )
+  // return (
+  //   <Editor
+  //     post={{
+  //       id: post.id,
+  //       title: post.title,
+  //       content: post.content,
+  //       published: post.published,
+  //     }}
+  //   />
+  // )
 }

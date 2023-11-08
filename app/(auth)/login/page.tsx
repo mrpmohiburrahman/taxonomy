@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import { SignIn } from "@clerk/nextjs"
-import { shadesOfPurple } from "@clerk/themes"
+// import { SignIn } from "@clerk/nextjs"
+// import { shadesOfPurple } from "@clerk/themes"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -17,7 +17,7 @@ export default function LoginPage() {
   // return <div>hello</div>
   // return <SignIn appearance={{ baseTheme: shadesOfPurple }} />
   return (
-    <div className="container flex h-screen w-screen flex-col items-center justify-center">
+    <div className="container flex flex-col items-center justify-center w-screen h-screen">
       <Link
         href="/"
         className={cn(
@@ -26,14 +26,14 @@ export default function LoginPage() {
         )}
       >
         <>
-          <Icons.chevronLeft className="mr-2 h-4 w-4" />
+          <Icons.chevronLeft className="w-4 h-4 mr-2" />
           Back
         </>
       </Link>
-      <SignIn
+      {/* <SignIn
         appearance={{ baseTheme: shadesOfPurple }}
         signUpUrl={"/register"}
-      />
+      /> */}
       {/* <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
           <Icons.logo className="w-6 h-6 mx-auto" />

@@ -1,6 +1,5 @@
 import Link from "next/link"
-import { UserButton, auth, currentUser } from "@clerk/nextjs"
-import { dark, shadesOfPurple } from "@clerk/themes"
+
 
 import { marketingConfig } from "@/config/marketing"
 import { cn } from "@/lib/utils"
@@ -16,7 +15,7 @@ interface MarketingLayoutProps {
 export default async function MarketingLayout({
   children,
 }: MarketingLayoutProps) {
-  const _currentUser = await currentUser()
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="container z-40 bg-background">
@@ -39,7 +38,7 @@ export default async function MarketingLayout({
                 paddingLeft: 20,
               }}
             >
-              {_currentUser ? (
+              {/* {_currentUser ? (
                 <UserButton
                   appearance={{ baseTheme: shadesOfPurple }}
                   userProfileProps={{
@@ -57,7 +56,7 @@ export default async function MarketingLayout({
                 >
                   Login
                 </Link>
-              )}
+              )} */}
             </nav>
           </div>
         </div>
