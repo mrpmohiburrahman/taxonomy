@@ -1,3 +1,4 @@
+import { currentUser } from "@clerk/nextjs"
 import { getServerSession } from "next-auth/next"
 import * as z from "zod"
 
@@ -40,28 +41,27 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
-    const session = await getServerSession(authOptions)
+    const user = await currentUser()
 
-    if (!session) {
+    if (!user) {
       return new Response("Unauthorized", { status: 403 })
     }
 
-    const { user } = session
-    const subscriptionPlan = await getUserSubscriptionPlan(user.id)
+    // const subscriptionPlan = await getUserSubscriptionPlan(user.id)
 
-    // If user is on a free plan.
-    // Check if user has reached limit of 3 posts.
-    if (!subscriptionPlan?.isPro) {
-      const count = await db.post.count({
-        where: {
-          authorId: user.id,
-        },
-      })
+    // // If user is on a free plan.
+    // // Check if user has reached limit of 3 posts.
+    // if (!subscriptionPlan?.isPro) {
+    //   const count = await db.post.count({
+    //     where: {
+    //       authorId: user.id,
+    //     },
+    //   })
 
-      if (count >= 3) {
-        throw new RequiresProPlanError()
-      }
-    }
+    //   if (count >= 3) {
+    //     throw new RequiresProPlanError()
+    //   }
+    // }
 
     const json = await req.json()
     const body = postCreateSchema.parse(json)
@@ -70,7 +70,7 @@ export async function POST(req: Request) {
       data: {
         title: body.title,
         content: body.content,
-        authorId: session.user.id,
+        authorId: user.id,
       },
       select: {
         id: true,

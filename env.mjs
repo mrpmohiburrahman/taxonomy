@@ -7,8 +7,9 @@ export const env = createEnv({
     // See https://next-auth.js.org/deployment.
     // NEXTAUTH_URL: z.string().url().optional(),
     // NEXTAUTH_SECRET: z.string().min(1),
-
-    // DATABASE_URL: z.string().min(1),
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string().min(1),
+    CLERK_SECRET_KEY: z.string().min(1),
+    DATABASE_URL: z.string().min(1),
     // SMTP_FROM: z.string().min(1),
     // POSTMARK_API_TOKEN: z.string().min(1),
     // POSTMARK_SIGN_IN_TEMPLATE: z.string().min(1),
@@ -21,9 +22,11 @@ export const env = createEnv({
     NEXT_PUBLIC_APP_URL: z.string().min(1),
   },
   runtimeEnv: {
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
     // NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     // NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-    // DATABASE_URL: process.env.DATABASE_URL,
+    DATABASE_URL: process.env.DATABASE_URL,
     // SMTP_FROM: process.env.SMTP_FROM,
     // POSTMARK_API_TOKEN: process.env.POSTMARK_API_TOKEN,
     // POSTMARK_SIGN_IN_TEMPLATE: process.env.POSTMARK_SIGN_IN_TEMPLATE,

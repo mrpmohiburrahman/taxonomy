@@ -1,3 +1,10 @@
+```
+ yarn dev
+```
+```
+ pscale connect mood dev --port 3309
+```
+
 # Taxonomy
 
 An open source application built using the new router, server components and everything new in Next.js 13.

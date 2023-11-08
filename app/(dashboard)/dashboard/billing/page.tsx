@@ -25,20 +25,20 @@ export const metadata = {
 export default async function BillingPage() {
   const user = await getCurrentUser()
 
-  if (!user) {
-    redirect(authOptions?.pages?.signIn || "/login")
-  }
+  // if (!user) {
+  //   redirect(authOptions?.pages?.signIn || "/login")
+  // }
 
-  const subscriptionPlan = await getUserSubscriptionPlan(user.id)
+  // const subscriptionPlan = await getUserSubscriptionPlan(user.id)
 
   // If user has a pro plan, check cancel status on Stripe.
-  let isCanceled = false
-  if (subscriptionPlan.isPro && subscriptionPlan.stripeSubscriptionId) {
-    const stripePlan = await stripe.subscriptions.retrieve(
-      subscriptionPlan.stripeSubscriptionId
-    )
-    isCanceled = stripePlan.cancel_at_period_end
-  }
+  // let isCanceled = false
+  // if (subscriptionPlan.isPro && subscriptionPlan.stripeSubscriptionId) {
+  //   const stripePlan = await stripe.subscriptions.retrieve(
+  //     subscriptionPlan.stripeSubscriptionId
+  //   )
+  //   isCanceled = stripePlan.cancel_at_period_end
+  // }
 
   return (
     <DashboardShell>
@@ -64,12 +64,12 @@ export default async function BillingPage() {
             .
           </AlertDescription>
         </Alert>
-        <BillingForm
+        {/* <BillingForm
           subscriptionPlan={{
             ...subscriptionPlan,
             isCanceled,
           }}
-        />
+        /> */}
       </div>
     </DashboardShell>
   )

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation"
+import { currentUser } from "@clerk/nextjs"
 
 import { dashboardConfig } from "@/config/dashboard"
 import { getCurrentUser } from "@/lib/session"
@@ -14,7 +15,8 @@ interface DashboardLayoutProps {
 export default async function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
-  const user = await getCurrentUser()
+  const user = await currentUser()
+  console.log(`🚀 ~ file: layout.tsx:18 ~ user:`, user)
 
   if (!user) {
     return notFound()

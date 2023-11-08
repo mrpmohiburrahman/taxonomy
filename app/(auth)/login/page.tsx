@@ -1,5 +1,7 @@
 import { Metadata } from "next"
 import Link from "next/link"
+import { SignIn } from "@clerk/nextjs"
+import { shadesOfPurple } from "@clerk/themes"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -12,6 +14,8 @@ export const metadata: Metadata = {
 }
 
 export default function LoginPage() {
+  // return <div>hello</div>
+  // return <SignIn appearance={{ baseTheme: shadesOfPurple }} />
   return (
     <div className="container flex h-screen w-screen flex-col items-center justify-center">
       <Link
@@ -26,9 +30,13 @@ export default function LoginPage() {
           Back
         </>
       </Link>
-      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+      <SignIn
+        appearance={{ baseTheme: shadesOfPurple }}
+        signUpUrl={"/register"}
+      />
+      {/* <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
-          <Icons.logo className="mx-auto h-6 w-6" />
+          <Icons.logo className="w-6 h-6 mx-auto" />
           <h1 className="text-2xl font-semibold tracking-tight">
             Welcome back
           </h1>
@@ -37,15 +45,16 @@ export default function LoginPage() {
           </p>
         </div>
         <UserAuthForm />
-        <p className="px-8 text-center text-sm text-muted-foreground">
+
+        <p className="px-8 text-sm text-center text-muted-foreground">
           <Link
             href="/register"
-            className="hover:text-brand underline underline-offset-4"
+            className="underline hover:text-brand underline-offset-4"
           >
             Don&apos;t have an account? Sign Up
           </Link>
         </p>
-      </div>
+      </div> */}
     </div>
   )
 }

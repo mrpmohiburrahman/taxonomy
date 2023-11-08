@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation"
+import { currentUser } from "@clerk/nextjs"
 
 import { authOptions } from "@/lib/auth"
 import { db } from "@/lib/db"
@@ -14,12 +15,12 @@ export const metadata = {
 }
 
 export default async function DashboardPage() {
-  const user = await getCurrentUser()
+  const user = await currentUser()
 
   if (!user) {
-    redirect(authOptions?.pages?.signIn || "/login")
+    redirect("/login")
   }
-
+  // const posts = []
   const posts = await db.post.findMany({
     where: {
       authorId: user.id,
@@ -34,7 +35,6 @@ export default async function DashboardPage() {
       updatedAt: "desc",
     },
   })
-
   return (
     <DashboardShell>
       <DashboardHeader heading="Posts" text="Create and manage posts.">
@@ -42,7 +42,7 @@ export default async function DashboardPage() {
       </DashboardHeader>
       <div>
         {posts?.length ? (
-          <div className="divide-y divide-border rounded-md border">
+          <div className="border divide-y rounded-md divide-border">
             {posts.map((post) => (
               <PostItem key={post.id} post={post} />
             ))}

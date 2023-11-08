@@ -1,4 +1,6 @@
 import Link from "next/link"
+import { UserButton, auth, currentUser } from "@clerk/nextjs"
+import { dark, shadesOfPurple } from "@clerk/themes"
 
 import { marketingConfig } from "@/config/marketing"
 import { cn } from "@/lib/utils"
@@ -14,10 +16,11 @@ interface MarketingLayoutProps {
 export default async function MarketingLayout({
   children,
 }: MarketingLayoutProps) {
+  const _currentUser = await currentUser()
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex flex-col min-h-screen">
       <header className="container z-40 bg-background">
-        <div className="flex h-20 items-center justify-between py-6">
+        <div className="flex items-center justify-between h-20 py-6">
           <MainNav items={marketingConfig.mainNav} />
           <div
             style={{
@@ -36,15 +39,25 @@ export default async function MarketingLayout({
                 paddingLeft: 20,
               }}
             >
-              <Link
-                href="/login"
-                className={cn(
-                  buttonVariants({ variant: "secondary", size: "sm" }),
-                  "px-4"
-                )}
-              >
-                Login
-              </Link>
+              {_currentUser ? (
+                <UserButton
+                  appearance={{ baseTheme: shadesOfPurple }}
+                  userProfileProps={{
+                    appearance: { baseTheme: shadesOfPurple },
+                  }}
+                  afterSignOutUrl="/"
+                />
+              ) : (
+                <Link
+                  href="/login"
+                  className={cn(
+                    buttonVariants({ variant: "secondary", size: "sm" }),
+                    "px-4"
+                  )}
+                >
+                  Login
+                </Link>
+              )}
             </nav>
           </div>
         </div>
