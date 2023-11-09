@@ -39,11 +39,11 @@ export const metadata = {
   ],
   authors: [
     {
-      name: "shadcn",
-      url: "https://shadcn.com",
+      name: "MD. MOHIBUR RAHMAN",
+      url: "https://pixellog.io/",
     },
   ],
-  creator: "shadcn",
+  creator: "MD. MOHIBUR RAHMAN",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
@@ -61,7 +61,7 @@ export const metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [`${siteConfig.url}/og.jpg`],
-    creator: "@shadcn",
+    creator: "@MD. MOHIBUR RAHMAN",
   },
   icons: {
     icon: "/favicon.ico",
