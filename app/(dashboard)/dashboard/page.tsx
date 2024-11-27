@@ -14,26 +14,26 @@ export const metadata = {
 }
 
 export default async function DashboardPage() {
-  const user = await getCurrentUser()
+  // const user = await getCurrentUser()
 
-  if (!user) {
-    redirect(authOptions?.pages?.signIn || "/login")
-  }
+  // if (!user) {
+  //   redirect(authOptions?.pages?.signIn || "/login")
+  // }
 
-  const posts = await db.post.findMany({
-    where: {
-      authorId: user.id,
-    },
-    select: {
-      id: true,
-      title: true,
-      published: true,
-      createdAt: true,
-    },
-    orderBy: {
-      updatedAt: "desc",
-    },
-  })
+  // const posts = await db.post.findMany({
+  //   where: {
+  //     authorId: user.id,
+  //   },
+  //   select: {
+  //     id: true,
+  //     title: true,
+  //     published: true,
+  //     createdAt: true,
+  //   },
+  //   orderBy: {
+  //     updatedAt: "desc",
+  //   },
+  // })
 
   return (
     <DashboardShell>
@@ -41,7 +41,7 @@ export default async function DashboardPage() {
         <PostCreateButton />
       </DashboardHeader>
       <div>
-        {posts?.length ? (
+        {/* {posts?.length ? (
           <div className="divide-y divide-border rounded-md border">
             {posts.map((post) => (
               <PostItem key={post.id} post={post} />
@@ -56,7 +56,7 @@ export default async function DashboardPage() {
             </EmptyPlaceholder.Description>
             <PostCreateButton variant="outline" />
           </EmptyPlaceholder>
-        )}
+        )} */}
       </div>
     </DashboardShell>
   )

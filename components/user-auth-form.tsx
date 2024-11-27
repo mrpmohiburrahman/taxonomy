@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { signIn } from "next-auth/react"
 import { useForm } from "react-hook-form"
-import * as z from "zod"
+import type * as z from "zod"
 
 import { cn } from "@/lib/utils"
 import { userAuthSchema } from "@/lib/validations/auth"
@@ -30,30 +30,38 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [isGitHubLoading, setIsGitHubLoading] = React.useState<boolean>(false)
   const searchParams = useSearchParams()
+  const router = useRouter()
 
   async function onSubmit(data: FormData) {
     setIsLoading(true)
+    try {
+      //   redirect: false,
+      // const result = await signIn("credentials", {
+      //   email: data.email,
+      //   // Include other fields like password if necessary
+      // })
 
-    const signInResult = await signIn("email", {
-      email: data.email.toLowerCase(),
-      redirect: false,
-      callbackUrl: searchParams?.get("from") || "/dashboard",
-    })
-
-    setIsLoading(false)
-
-    if (!signInResult?.ok) {
-      return toast({
+      // if (result?.error) {
+      //   toast({
+      //     title: "Sign in failed",
+      //     description: result.error,
+      //     variant: "destructive",
+      //   })
+      // } else {
+      //   router.push("/dashboard")
+      // }
+      console.log("🚀 ~ onSubmit ~ onSubmit: clicked")
+      router.push("/dashboard")
+    } catch (error) {
+      console.log("🚀 ~ onSubmit ~ error:", error)
+      toast({
         title: "Something went wrong.",
-        description: "Your sign in request failed. Please try again.",
+        description: "Please try again.",
         variant: "destructive",
       })
+    } finally {
+      setIsLoading(false)
     }
-
-    return toast({
-      title: "Check your email",
-      description: "We sent you a login link. Be sure to check your spam too.",
-    })
   }
 
   return (
@@ -103,7 +111,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         className={cn(buttonVariants({ variant: "outline" }))}
         onClick={() => {
           setIsGitHubLoading(true)
-          signIn("github")
+          signIn("github", { callbackUrl: "/dashboard" })
         }}
         disabled={isLoading || isGitHubLoading}
       >
