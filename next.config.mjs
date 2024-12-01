@@ -8,10 +8,7 @@ const nextConfig = {
   images: {
     domains: ["avatars.githubusercontent.com"],
   },
-  experimental: {
-    appDir: true,
-    serverComponentsExternalPackages: ["@prisma/client"],
-  },
+  experimental: {},
 }
 
 export default withContentlayer(nextConfig)
