@@ -28,49 +28,13 @@ interface MarketingLayoutProps {
 export default async function MarketingLayout({
   children,
 }: MarketingLayoutProps) {
-  // return (
-  //   <div className="flex min-h-screen flex-col">
-  //     <header className="container z-40 bg-background">
-  //       <div className="flex h-20 items-center justify-between py-6">
-  //         <MainNav items={marketingConfig.mainNav} />
-  //         <nav>
-  //           <Link
-  //             href="/login"
-  //             className={cn(
-  //               buttonVariants({ variant: "secondary", size: "sm" }),
-  //               "px-4"
-  //             )}
-  //           >
-  //             Login
-  //           </Link>
-  //         </nav>
-  //       </div>
-  //     </header>
-  //     <main className="flex-1">{children}</main>
-  //     <SiteFooter />
-  //   </div>
-  // )
   return (
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <MainNav items={marketingConfig.mainNav} />
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
-          <Separator orientation="vertical" className="mr-2 h-4" />
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href="#">
-                  Building Your Application
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="hidden md:block" />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+          <MainNav />
         </header>
         <main className="flex-1">{children}</main>
       </SidebarInset>
