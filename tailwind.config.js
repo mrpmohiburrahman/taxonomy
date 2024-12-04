@@ -103,9 +103,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    require("@tailwindcss/typography"),
-    require("tailwind-scrollbar"), // Add the scrollbar plugin
-  ],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 }
