@@ -2,6 +2,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { useSelectedLayoutSegment } from "next/navigation"
 
@@ -29,6 +30,17 @@ interface MainNavProps {
 export function MainNav() {
   return (
     <div className="flex flex-1">
+      <Link href="/" className="hidden items-center space-x-2 md:flex">
+        <Image
+          src="/logo.png" // Path to the logo file
+          alt="Site Logo"
+          width={40} // Adjust the width to suit your needs
+          height={40} // Adjust the height to suit your needs
+        />
+        <span className="hidden font-bold sm:inline-block">
+          {siteConfig.name}
+        </span>
+      </Link>
       <div className="ml-auto">
         <NavigationMenu>
           <NavigationMenuList>
