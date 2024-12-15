@@ -1,8 +1,14 @@
 // types/index.d.ts
-import type { User } from "@prisma/client"
-import type { Icon } from "lucide-react"
+import type { User } from "@prisma/client";
+import type { Icon } from "lucide-react";
 
-import type { Icons } from "@/components/icons"
+
+
+import type { Icons } from "@/components/icons";
+
+
+
+
 
 export type NavItem = {
   title: string
@@ -33,11 +39,17 @@ export type SiteConfig = {
   description: string
   url: string
   ogImage: string
-  links: {
-    twitter: string
-    github: string
-  }
 }
+// export type SiteConfig = {
+//   name: string
+//   description: string
+//   url: string
+//   ogImage: string
+//   links: {
+//     twitter: string
+//     github: string
+//   }
+// }
 
 export type DocsConfig = {
   mainNav: MainNavItem[]
