@@ -1,3 +1,4 @@
+// components/callout.tsx
 import { cn } from "@/lib/utils"
 
 interface CalloutProps {

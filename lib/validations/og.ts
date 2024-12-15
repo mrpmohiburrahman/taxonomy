@@ -1,3 +1,4 @@
+// lib/validations/og.ts
 import * as z from "zod"
 
 export const ogImageSchema = z.object({

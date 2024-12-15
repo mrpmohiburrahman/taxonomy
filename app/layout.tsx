@@ -1,3 +1,4 @@
+// app/layout.tsx
 import { Inter as FontSans } from "next/font/google"
 import localFont from "next/font/local"
 

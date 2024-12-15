@@ -1,3 +1,4 @@
+// components/site-footer.tsx
 import * as React from "react"
 
 import { siteConfig } from "@/config/site"

@@ -1,3 +1,4 @@
+// hooks/use-lock-body.ts
 import * as React from "react"
 
 // @see https://usehooks.com/useLockBodyScroll.

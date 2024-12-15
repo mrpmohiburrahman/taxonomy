@@ -1,3 +1,4 @@
+// app/(docs)/guides/page.tsx
 import Link from "next/link"
 import { allGuides } from "contentlayer/generated"
 import { compareDesc } from "date-fns"

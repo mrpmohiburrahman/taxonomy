@@ -1,3 +1,4 @@
+// config/dashboard.ts
 import { DashboardConfig } from "types"
 
 export const dashboardConfig: DashboardConfig = {

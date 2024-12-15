@@ -1,3 +1,4 @@
+// lib/toc.ts
 // @ts-nocheck
 // TODO: Fix this when we turn strict mode on.
 

@@ -1,3 +1,4 @@
+// app/(dashboard)/dashboard/billing/page.tsx
 import { redirect } from "next/navigation"
 
 import { authOptions } from "@/lib/auth"

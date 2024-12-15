@@ -1,3 +1,4 @@
+// components/post-item.tsx
 import Link from "next/link"
 import { Post } from "@prisma/client"
 

@@ -1,3 +1,4 @@
+// components/header.tsx
 interface DashboardHeaderProps {
   heading: string
   text?: string

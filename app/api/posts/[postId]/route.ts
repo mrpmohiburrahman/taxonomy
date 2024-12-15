@@ -1,3 +1,4 @@
+// app/api/posts/[postId]/route.ts
 import { getServerSession } from "next-auth"
 import * as z from "zod"
 

@@ -1,3 +1,4 @@
+// components/app-sidebar.tsx
 import * as React from "react"
 import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
 

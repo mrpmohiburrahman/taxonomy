@@ -1,3 +1,4 @@
+// hooks/use-mounted.ts
 import * as React from "react"
 
 export function useMounted() {

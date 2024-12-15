@@ -1,3 +1,4 @@
+// config/docs.ts
 import { DocsConfig } from "types"
 
 export const docsConfig: DocsConfig = {

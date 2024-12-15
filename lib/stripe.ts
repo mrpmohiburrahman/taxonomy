@@ -1,3 +1,4 @@
+// lib/stripe.ts
 import Stripe from "stripe"
 
 import { env } from "@/env.mjs"

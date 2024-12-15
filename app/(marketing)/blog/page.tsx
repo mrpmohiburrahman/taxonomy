@@ -1,3 +1,4 @@
+// app/(marketing)/blog/page.tsx
 import Image from "next/image"
 import Link from "next/link"
 import { allPosts } from "contentlayer/generated"

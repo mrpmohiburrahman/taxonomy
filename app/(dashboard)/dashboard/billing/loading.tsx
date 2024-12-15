@@ -1,3 +1,4 @@
+// app/(dashboard)/dashboard/billing/loading.tsx
 import { CardSkeleton } from "@/components/card-skeleton"
 import { DashboardHeader } from "@/components/header"
 import { DashboardShell } from "@/components/shell"

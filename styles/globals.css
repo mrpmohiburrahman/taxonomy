@@ -132,8 +132,7 @@
   }
 } /* Custom Scrollbar Styles */
 
-Hide the scrollbar by default
-.scrollbar-hide-scrollbar::-webkit-scrollbar {
+Hide the scrollbar by default .scrollbar-hide-scrollbar::-webkit-scrollbar {
   width: 1px; /* Ultra-thin scrollbar */
   opacity: 0; /* Make it transparent */
   transition: opacity 0.1s ease-in-out;

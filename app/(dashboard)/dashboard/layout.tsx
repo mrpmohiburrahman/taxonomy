@@ -1,3 +1,4 @@
+// app/(dashboard)/dashboard/layout.tsx
 import { notFound } from "next/navigation"
 
 import { dashboardConfig } from "@/config/dashboard"

@@ -1,3 +1,4 @@
+// app/(marketing)/blog/[...slug]/page.tsx
 import { notFound } from "next/navigation"
 import { allAuthors, allPosts } from "contentlayer/generated"
 

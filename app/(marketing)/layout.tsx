@@ -1,3 +1,4 @@
+// app/(marketing)/layout.tsx
 import Link from "next/link"
 
 import { marketingConfig } from "@/config/marketing"
@@ -19,6 +20,7 @@ import {
 } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import { MainNav } from "@/components/main-nav"
+import { ModeToggle } from "@/components/mode-toggle"
 import { SiteFooter } from "@/components/site-footer"
 
 interface MarketingLayoutProps {
@@ -30,6 +32,7 @@ export default async function MarketingLayout({
 }: MarketingLayoutProps) {
   return (
     <SidebarProvider>
+      <ModeToggle />
       <AppSidebar />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">

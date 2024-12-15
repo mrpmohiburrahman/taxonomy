@@ -1,3 +1,4 @@
+// app/(auth)/register/page.tsx
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"

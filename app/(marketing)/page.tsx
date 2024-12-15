@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/components/app-sidebar"
+// app/(marketing)/page.tsx
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,6 +13,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar"
 
 export default function Page() {
   return (

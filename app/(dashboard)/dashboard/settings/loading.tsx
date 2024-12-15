@@ -1,3 +1,4 @@
+// app/(dashboard)/dashboard/settings/loading.tsx
 import { Card } from "@/components/ui/card"
 import { CardSkeleton } from "@/components/card-skeleton"
 import { DashboardHeader } from "@/components/header"

@@ -1,3 +1,4 @@
+// components/pager.tsx
 import Link from "next/link"
 import { Doc } from "contentlayer/generated"
 

@@ -1,3 +1,4 @@
+// components/page-header.tsx
 import { cn } from "@/lib/utils"
 
 interface DocsPageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {

@@ -1,3 +1,4 @@
+// config/marketing.ts
 import type { MarketingConfig } from "types"
 
 export const marketingConfig: MarketingConfig = {

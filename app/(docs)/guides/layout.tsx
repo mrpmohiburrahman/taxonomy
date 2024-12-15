@@ -1,3 +1,4 @@
+// app/(docs)/guides/layout.tsx
 interface GuidesLayoutProps {
   children: React.ReactNode
 }

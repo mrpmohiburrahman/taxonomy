@@ -1,3 +1,4 @@
+// app/(auth)/layout.tsx
 interface AuthLayoutProps {
   children: React.ReactNode
 }

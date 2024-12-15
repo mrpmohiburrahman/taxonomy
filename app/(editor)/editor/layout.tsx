@@ -1,3 +1,4 @@
+// app/(editor)/editor/layout.tsx
 interface EditorProps {
   children?: React.ReactNode
 }

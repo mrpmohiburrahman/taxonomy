@@ -1,3 +1,4 @@
+// types/index.d.ts
 import type { User } from "@prisma/client"
 import type { Icon } from "lucide-react"
 

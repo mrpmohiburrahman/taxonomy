@@ -1,3 +1,4 @@
+// components/user-avatar.tsx
 import { User } from "@prisma/client"
 import { AvatarProps } from "@radix-ui/react-avatar"
 

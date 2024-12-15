@@ -1,3 +1,4 @@
+// app/(editor)/editor/[postId]/not-found.tsx
 import Link from "next/link"
 
 import { buttonVariants } from "@/components/ui/button"

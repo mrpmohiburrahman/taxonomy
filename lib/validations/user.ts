@@ -1,3 +1,4 @@
+// lib/validations/user.ts
 import * as z from "zod"
 
 export const userNameSchema = z.object({

@@ -1,3 +1,4 @@
+// app/(editor)/editor/[postId]/loading.tsx
 import { Skeleton } from "@/components/ui/skeleton"
 
 export default function Loading() {

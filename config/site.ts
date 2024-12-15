@@ -1,3 +1,4 @@
+// config/site.ts
 import { SiteConfig } from "types"
 
 export const siteConfig: SiteConfig = {

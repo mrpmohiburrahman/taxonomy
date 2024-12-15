@@ -1,3 +1,4 @@
+// components/icons.tsx
 import {
   AlertTriangle,
   ArrowRight,

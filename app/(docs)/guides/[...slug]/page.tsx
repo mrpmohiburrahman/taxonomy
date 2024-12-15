@@ -1,3 +1,4 @@
+// app/(docs)/guides/[...slug]/page.tsx
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { allGuides } from "contentlayer/generated"

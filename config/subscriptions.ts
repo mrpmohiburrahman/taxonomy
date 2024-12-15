@@ -1,3 +1,4 @@
+// config/subscriptions.ts
 import { SubscriptionPlan } from "types"
 import { env } from "@/env.mjs"
 
