@@ -4,7 +4,7 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { useSelectedLayoutSegment } from "next/navigation"
+import { useTheme } from "next-themes"
 
 import type { MainNavItem, NavItem } from "types"
 import { marketingConfig } from "@/config/marketing"
@@ -28,14 +28,29 @@ interface MainNavProps {
 }
 
 export function MainNav() {
+  const { theme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null // Prevents mismatch between server and client
+  }
+
+  // Choose the logo based on the current theme
+  const logoSrc =
+    resolvedTheme === "dark" ? "/logo-dark.png" : "/logo-light.png"
+
   return (
     <div className="flex flex-1">
       <Link href="/" className="hidden items-center space-x-2 md:flex">
         <Image
-          src="/logo.png" // Path to the logo file
+          src={logoSrc} // Dynamic logo based on theme
           alt="Site Logo"
-          width={40} // Adjust the width to suit your needs
-          height={40} // Adjust the height to suit your needs
+          width={60} // Adjust the width to suit your needs
+          height={60} // Adjust the height to suit your needs
         />
         <span className="hidden font-bold sm:inline-block">
           {siteConfig.name}
